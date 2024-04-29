@@ -79,3 +79,29 @@ function displayTopSix() {
     }
     document.getElementById('dataDisplay').innerHTML = dataDisplayHTML;
 }
+
+function updateSubcategories() {
+    var categorySelect = document.getElementById("categorySelect");
+    var itemSelect = document.getElementById("itemSelect");
+    var selectedCategory = categorySelect.value;
+
+    itemSelect.innerHTML = ""; // 중분류 메뉴 초기화
+
+    if (selectedCategory === "1kg") {
+        var options = ["감자 1kg"];
+    } else if (selectedCategory === "1개") {
+        var options = ["가지 1개", "갈치 1마리", "계란 10개"];
+    } else if (selectedCategory === "1통") {
+        var options = ["간장 1통"];
+    }
+
+    options.forEach(function(option) {
+        var optionElement = document.createElement("option");
+        optionElement.textContent = option;
+        optionElement.value = option;
+        itemSelect.appendChild(optionElement);
+    });
+}
+
+// 페이지 로드시 한번 실행하여 초기화
+updateSubcategories();
