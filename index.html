@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <title>서울시 열린데이터 광장 OpenAPI 샘플(Javascript)</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1 id="header">서울시장탐방</h1>
+        <nav>
+            <ul>
+                <li><a href="menu1\index.html">품목별 시장 시세 비교</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="Main">
+        <div id="left">
+            <p class="font" id="title">먹거리 순위</p>
+            <p class="font" id="subtitle">일주일 동안 이런 먹거리들을 많이 찾았어요</p>
+            <div class="outer-container">
+                <div class="loader" id="loader" style="display: none;"></div> <!-- 로딩 아이콘 -->
+                <div class="loading-message" id="loadingMessage" style="display: none;">상품을 로딩중입니다. 잠시만 기다려주세요 ☺️</div>
+                <div class="data-display" id="dataDisplay">
+                    <!-- 여기에 데이터를 표시할 영역 -->
+                </div>
+            </div>
+        </div>
+
+
+        <div class="map">
+            <p>지도 API 사용 예정</p>
+        </div>
+
+        
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
