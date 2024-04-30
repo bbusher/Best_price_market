@@ -64,6 +64,9 @@ li{
 a{
     text-decoration: none;
     color : black;
+}
+
+li a {
     font-family: 'Pretendard-Bold';
     font-size: 23px;
 }

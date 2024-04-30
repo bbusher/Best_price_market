@@ -7,23 +7,34 @@
 </head>
 <body>
     <header>
-        <h1 id="header">서울시장탐방</h1>
+        <h1 id="header"><a href="../index.html">서울시장탐방</a></h1>
         <nav>
             <ul>
-                <li><a href="menu1\index.html">품목별 시장 시세 비교</a></li>
+                <li><a href="index.html" id="meun">품목별 시장 시세 비교</a></li>
             </ul>
         </nav>
     </header>
 
     <div>
+        <h3>시세가 궁금한 상품을 검색하세요 !</h3>
+    </div>
+
+    <div>
+        <p>분류를 선택하세요</p>
         <select id="categorySelect" onchange="updateSubcategories()">
-            <option value="1kg">1kg</option>
-            <option value="1개">1개</option>
-            <option value="1통">1통</option>
+            <option value="식재료 (채소)">식재료 (채소)</option>
+            <option value="식재료 (과일)">식재료 (과일)</option>
+            <option value="식재료 (육류)">식재료 (육류)</option>
+            <option value="식재료 (해산물)">식재료 (해산물)</option>
+            <option value="식재료 (가공식품)">식재료 (가공식품)</option>
+            <option value="식재료 (양념 및 조미료)">식재료 (양념 및 조미료)</option>
+            <option value="음료">음료</option>
+            <option value="기타 생활 용품">기타 생활 용품</option>
         </select>
     </div>
 
     <div>
+        <p>품목을 선택하세요</p>
         <select id="itemSelect">
             <!-- 중분류 옵션은 자바스크립트로 동적으로 추가됩니다 -->
         </select>
