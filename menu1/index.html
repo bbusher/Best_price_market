@@ -19,30 +19,32 @@
         <h3>시세가 궁금한 상품을 검색하세요 !</h3>
     </div>
 
-    <div>
-        <p>분류를 선택하세요</p>
-        <select id="categorySelect" onchange="updateSubcategories()">
-            <option value="식재료 (채소)">식재료 (채소)</option>
-            <option value="식재료 (과일)">식재료 (과일)</option>
-            <option value="식재료 (육류)">식재료 (육류)</option>
-            <option value="식재료 (해산물)">식재료 (해산물)</option>
-            <option value="식재료 (가공식품)">식재료 (가공식품)</option>
-            <option value="식재료 (양념 및 조미료)">식재료 (양념 및 조미료)</option>
-            <option value="음료">음료</option>
-            <option value="기타 생활 용품">기타 생활 용품</option>
-        </select>
-    </div>
+    <div class="block">
+        <div class="search">
+            <p class="anoun">분류를 선택하세요</p>
+            <select id="categorySelect" onchange="updateSubcategories()">
+                <option value="식재료 (채소)">식재료 (채소)</option>
+                <option value="식재료 (과일)">식재료 (과일)</option>
+                <option value="식재료 (육류)">식재료 (육류)</option>
+                <option value="식재료 (해산물)">식재료 (해산물)</option>
+                <option value="식재료 (가공식품)">식재료 (가공식품)</option>
+                <option value="식재료 (양념 및 조미료)">식재료 (양념 및 조미료)</option>
+                <option value="음료">음료</option>
+                <option value="기타 생활 용품">기타 생활 용품</option>
+            </select>
+        </div>
 
-    <div>
-        <p>품목을 선택하세요</p>
-        <select id="itemSelect">
-            <!-- 중분류 옵션은 자바스크립트로 동적으로 추가됩니다 -->
-        </select>
-        <button onclick="loadData(document.getElementById('itemSelect').value)">제출</button>
+        <div class="search">
+            <p class="anoun" >품목을 선택하세요</p>
+            <select id="itemSelect">
+                <!-- 중분류 옵션은 자바스크립트로 동적으로 추가됩니다 -->
+            </select>
+        </div>
+            <button onclick="loadData(document.getElementById('itemSelect').value)">검색</button>
+        
     </div>
-
     <div class="loader" id="loader" style="display: none"></div>
-    <div class="loading-message" id="loadingMessage" style="display: none">데이터를 불러오는 중...</div>
+    <div class="loading-message" id="loadingMessage" style="display: none">데이터를 불러오는 중... <br> 1분 정도 소요 됩니다 ! 조금만 기다려주세요 ☺️</div>
 
     <div id="dataDisplay"></div>
 

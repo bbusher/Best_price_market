@@ -89,4 +89,93 @@ li a {
 .loading-message {
     text-align: center;
     margin-bottom: 20px;
+    font-family: 'Pretendard-Regular';
+}
+
+h3{
+    text-align: center;
+    font-family: 'Pretendard-Bold';
+    font-size: 30px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+select{
+    font-family: 'Pretendard-Bold';
+    width: 300px;
+    height: 50px;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
+    border: none;
+}
+
+button{
+    margin-left: 20px;
+    font-size: 15px;
+    font-family: 'Pretendard-ExtraBold';
+    width: 150px;
+    height: 50px;
+    margin-top: 50px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
+    border: none;
+    background-color: #5E5E5E;
+    color: white;
+}
+
+.block{
+    font-family: 'Pretendard-Regular';
+    color: #5E5E5E;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(148, 187, 93,0.3);
+    border-radius: 20px;
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+.search{
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.anoun{
+    text-align: center;
+}
+
+.anoun1{
+    text-align: center;
+}
+
+.data-item{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 30px;
+}
+
+#itemName{
+    font-family: 'Pretendard-ExtraBold';
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+#marketName{
+    font-family: 'Pretendard-Bold';
+    display: flex;
+    justify-content: center;
+}
+
+
+#enPrice{
+    padding-left: 10px;
+    color: #FF2B2B;
+}
+
+#enMarket{
+    padding-left: 10px;
+    color: #0066FF;
 }

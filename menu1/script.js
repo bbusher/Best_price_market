@@ -59,7 +59,7 @@ function processDataFromXML(xmlData, selectedItem) {
         var itemDate = rows[i].getElementsByTagName("P_YEAR_MONTH")[0].textContent;
 
         // 날짜가 "2024-03"이고, 품목이 선택된 품목에 포함되고, 가격이 0이 아닌 경우에만 데이터에 추가
-        if (itemDate === "2024-03" && itemName.includes(selectedItem) && itemPrice !== 0) {
+        if (itemDate === "2024-04" && itemName.includes(selectedItem) && itemPrice !== 0) {
             batchData.push({
                 market: marketName,
                 gu: guName, // M_GU_NAME 추가
@@ -81,8 +81,8 @@ function displayTopSix(allData) {
         for (var i = 0; i < Math.min(1, allData.length); i++) {
             var entry = allData[i];
             dataDisplayHTML += "<div class='data-item'>";
-            dataDisplayHTML += "<div id='itemName'>" + entry.item + '에 대한 최저가는 ' + entry.price + "원입니다</div>";
-            dataDisplayHTML += "<div id='marketName'>최저가로 판매하는 시장은 " +  entry.gu +'의 ' + entry.market + "입니다</div>";
+            dataDisplayHTML += "<div id='itemName'>" + entry.item + "에 대한 최저가는"+ "<div id='enPrice'> " + entry.price + "</div>원입니다</div>";
+            dataDisplayHTML += "<div id='marketName'>최저가로 판매하는 시장은 " +  entry.gu +'의 '+"<div id='enMarket'> " + entry.market + "</div>입니다</div>";
             dataDisplayHTML += "</div>";
         }
     }

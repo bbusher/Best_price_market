@@ -3,6 +3,9 @@ var batchSize = 1000; // 한 번에 가져올 데이터 양
 var totalDataCount = 60000; // 총 데이터 개수
 var requestsCompleted = 0;
 
+// 로딩될 과일 목록
+var fruits = ['사과', '단감', '귤', '고구마', '갓'];
+
 function loadData() {
     // 로딩 아이콘 및 메시지 표시
     document.getElementById('loader').style.display = 'block';
@@ -13,7 +16,9 @@ function loadData() {
     
     // 요청할 URL들을 생성
     for (var i = 0; i < totalDataCount; i += batchSize) {
-        batchUrls.push(baseUrl + (i + 1) + '/' + Math.min(i + batchSize, totalDataCount) + '/');
+        // 랜덤으로 과일 선택
+        var randomFruit = fruits[Math.floor(Math.random() * fruits.length)];
+        batchUrls.push(baseUrl + (i + 1) + '/' + Math.min(i + batchSize, totalDataCount) + '/?ITEM_NAME=' + encodeURIComponent(randomFruit));
     }
 
     var promises = batchUrls.map(function(url) {
@@ -46,12 +51,12 @@ function processDataFromXML(xmlData) {
     var items = xmlDoc.getElementsByTagName("A_NAME");
     var prices = xmlDoc.getElementsByTagName("A_PRICE");
 
-    // '사과'가 포함되고 가격이 0이 아닌 항목을 data 배열에 추가
+    // 해당 과일만을 data 배열에 추가
     for (var i = 0; i < markets.length; i++) {
         var itemName = items[i].childNodes[0].nodeValue;
         var itemPrice = parseFloat(prices[i].childNodes[0].nodeValue.replace(/[^0-9.-]+/g,""));
 
-        if (itemName.includes('사과') && itemPrice !== 0) {
+        if (fruits.some(fruit => itemName.includes(fruit)) && itemPrice !== 0) {
             data.push({
                 market: markets[i].childNodes[0].nodeValue,
                 item: itemName,
