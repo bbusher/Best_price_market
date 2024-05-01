@@ -1,6 +1,6 @@
 var data = {};
 var batchSize = 1000; // 한 번에 가져올 데이터 양
-var totalDataCount = 10000; // 총 데이터 개수
+var totalDataCount = 5000; // 총 데이터 개수
 var requestsCompleted = 0;
 
 function loadData() {
@@ -50,7 +50,7 @@ function processDataFromXML(xmlData) {
         var itemName = items[i].childNodes[0].nodeValue;
         var itemPrice = parseFloat(prices[i].childNodes[0].nodeValue.replace(/[^0-9.-]+/g,""));
 
-        if (yearMonth === '2024-04' && (itemName.includes('사과') || itemName.includes('배') || itemName.includes('단감') || itemName.includes('토마토'))) {
+        if (yearMonth === '2024-04' && (itemName.includes('감자 1kg') || itemName.includes('대파 1kg') || itemName.includes('콩나물 500g') || itemName.includes('양파 1망')|| itemName.includes('포도(샤인머스켓) 1kg')|| itemName.includes('사과 1개')|| itemName.includes('복숭아 1개')|| itemName.includes('닭고기 1kg')|| itemName.includes('돼지고기 100g')|| itemName.includes('고등어 1마리'))) {
             if (itemPrice !== 0 && (!data[itemName] || data[itemName].price > itemPrice)) {
                 data[itemName] = {
                     market: markets[i].childNodes[0].nodeValue,
