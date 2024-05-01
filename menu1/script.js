@@ -1,6 +1,6 @@
 var data = [];
 var batchSize = 1000; // 한 번에 가져올 데이터 양
-var totalDataCount = 60000; // 총 데이터 개수
+var totalDataCount = 10000; // 총 데이터 개수
 var requestsCompleted = 0;
 
 function loadData(selectedItem) {
