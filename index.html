@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <title>서울시 열린데이터 광장 OpenAPI 샘플(Javascript)</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js" defer></script>
+    <script src="map.js" defer></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e2b3ded7c563c658e3617fc9853ebe42"></script>
 </head>
 <body>
     <header>
-        <h1 id="header">서울시장탐방</h1>
+        <h1 id="header">오늘시장탐방</h1>
         <nav>
             <ul>
                 <li><a href="menu1\index.html">품목별 시장 시세 비교</a></li>
@@ -21,7 +25,12 @@
                 <p class="font" id="title">날씨 정보</p>
                 <p class="font" id="subtitle">장보러 가는 오늘의 날씨를 알려드려요 !</p>
                 <div class="outer-container_W">
-                   
+                    <!-- 로더를 여기에 추가 -->
+                    <div class="loader" id="weatherLoader" style="display: none;"></div>
+                    <div class="loading-message" id="loadingMessage1" style="display: none;">날씨 정보를 불러오고 있습니다 🌞</div>
+                    <div class="weather-disp"  id="weather-info">
+                        <!-- 여기에 날씨 정보를 표시할 영역 -->
+                    </div>
                 </div>
             </div>
 
@@ -39,14 +48,12 @@
             </div>
         </div>
 
-
-        <div class="map">
-            <p>지도 API 사용 예정</p>
+        <div id ="right">
+            <p class="font" id="title">서울 시장 탐방하기</p>
+            <p class="font" id="subtitle">지도로 먼저 가볼까요?</p>
+            <div id="map"></div>
         </div>
-
         
     </div>
-
-    <script src="script.js"></script>
 </body>
 </html>

@@ -3,6 +3,70 @@ var batchSize = 1000; // 한 번에 가져올 데이터 양
 var totalDataCount = 5000; // 총 데이터 개수
 var requestsCompleted = 0;
 
+$(document).ready(function() {
+    var vilage_weather_url = "http://openapi.seoul.go.kr:8088/6d4f457a686b776837306f79424b41/json/citydata/1/5/광화문·덕수궁";
+
+    // AJAX 요청
+    $.ajax({
+        url: vilage_weather_url,
+        type: "GET",
+        beforeSend: function() {
+            // AJAX 요청이 시작되기 전에 로더를 표시
+            $("#weatherLoader").show();
+            $("#loadingMessage1").show();
+        },
+        success: function(response) {
+            // 데이터 불러오기 성공
+            var data = response.CITYDATA.WEATHER_STTS;
+            var now = new Date();
+            var y = now.getFullYear();
+            var m = now.getMonth() + 1; // 월은 0부터 시작하므로 +1
+            var d = now.getDate();
+            var h = now.getHours() + 1; // 시간은 시차 보정값 없이 가져옴
+            var t = y.toString() + m.toString().padStart(2, '0') + d.toString().padStart(2, '0') + h.toString().padStart(2, '0')+'00';
+
+            var weatherInfoHTML = "";
+
+            data.forEach(function(row) {
+                if ('FCST24HOURS' in row) {
+                    var forecasts = row['FCST24HOURS'];
+                    JSON.stringify(forecasts)
+                    forecasts.forEach(function(forecast) {
+                        if ('FCST_DT' in forecast && forecast['FCST_DT'] == t) {
+                            weatherInfoHTML += "<p>오늘 서울의 날씨는 " + forecast['SKY_STTS'] + " 현재 기온은 " + row['TEMP'] + "도</p>";
+                        }
+                    });
+                }
+            
+                /*weatherInfoHTML += "<p>최저기온은 " + row['MIN_TEMP'] + " 이며, 최고기온은 " + row['MAX_TEMP'] + " 으로 예상됩니다.</p>";*/
+                /*weatherInfoHTML += "<p>현재 기온은 " + row['TEMP'] + "도 이며</p>";*/
+                weatherInfoHTML += "<p>미세먼지 농도는 " + row['PM10'] + "으로 " + row['PM10_INDEX'] + ", 초미세먼지 농도는 " + row['PM25'] + "으로 " + row['PM25_INDEX'] + "입니다.</p>";
+                if (row['PM10_INDEX'] == '나쁨' || row['PM25_INDEX'] == '나쁨') {
+                    weatherInfoHTML += "<p>오늘은 미세먼지 수치가 나쁨입니다. 마스크를 착용하는 것이 좋아요</p>";
+                }
+               /* weatherInfoHTML += "<p>낮동안 " + row['UV_MSG'] + "</p><br>";*/
+            });
+
+            $("#weather-info").html(weatherInfoHTML);
+            $("#weatherLoader").hide();
+            $("#loadingMessage1").hide();
+        },
+        error: function(xhr, status, error) {
+            // 에러 처리
+            console.error("에러:", error);
+            $("#weather-info").html("<p>날씨 정보를 불러오는 중 오류가 발생했습니다.</p>");
+        },
+        complete: function() {
+            // 요청 완료되면 로더 숨기기
+            $("#loader").hide();
+        }
+    });
+});
+
+
+
+
+
 function loadData() {
     // 로딩 아이콘 및 메시지 표시
     document.getElementById('loader').style.display = 'block';
