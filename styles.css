@@ -1,23 +1,67 @@
+
+@font-face {
+    font-family: 'Pretendard-Thin';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard-ExtraLight';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard-Light';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+}
+
 @font-face {
     font-family: 'Pretendard-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Pretendard-Bold';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
+    font-family: 'Pretendard-Medium';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pretendard-SemiBold';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-SemiBold.woff') format('woff');
     font-weight: 600;
     font-style: normal;
 }
 
 @font-face {
+    font-family: 'Pretendard-Bold';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'Pretendard-ExtraBold';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff') format('woff');
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff') format('woff');
     font-weight: 800;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'Pretendard-Black';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
 
 @font-face {
     font-family: 'YClover-Bold';
@@ -25,9 +69,10 @@
     font-weight: 700;
     font-style: normal;
 }
+
 body {
     width : 1280px;
-    height:  832px;
+    height:  750px;
     margin: 0 auto;
     padding: 0px 40px 40px 40px;
     margin-top: 0px;
@@ -42,7 +87,6 @@ header{
 }
 
 nav {
-    
     float: right;
     vertical-align: middle;
     color: black;
@@ -52,12 +96,11 @@ nav {
 }
 
 h1{
-    font-family: 'YClover-Bold';
+       font-family: 'YClover-Bold';
     margin-left: 30px;
     font-size: 40px;
     display: inline-block;
     vertical-align: middle;
-   background-color:linear-gradient(right, red, yellow);
 }
 
 
@@ -71,6 +114,10 @@ li{
 a{
     text-decoration: none;
     color : black;
+
+}
+
+header li a{
     font-family: 'Pretendard-Bold';
     font-size: 23px;
 }
@@ -93,7 +140,7 @@ a{
 }
 
 img{
-    width: 20px;
+    width: 150px;
 }
 
 .left_container{
@@ -216,12 +263,12 @@ img{
 }
 
 #loadingMessage{
-    font-family: 'Pretendard-Regular';
+    font-family: 'Pretendard-ExtraLight';
     font-size: 15px;
 }
 
 #loadingMessage1{
-    font-family: 'Pretendard-Regular';
+    font-family: 'Pretendard-ExtraLight';
     font-size: 15px;
 }
 
@@ -259,8 +306,37 @@ img{
 
 /* styles.css */
 
-#weather-info p {
-    font-family: 'Pretendard-Bold';
-    
+#weather-info {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
 }
+
+#w_contents{
+    margin-left: 30px;
+    text-align: center;
+}
+
+#W_info{
+    font-family: 'Pretendard-Bold';
+    font-size: 25px;
+    display: inline;
+    box-shadow: inset 0 -20px 0 rgba(255, 241, 135, 0.3); 
+}
+
+#d_info{
+    font-family: 'Pretendard-Bold';
+    font-size: 25px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+}
+
+#dust_info{
+    font-family: 'Pretendard-Regular';
+    font-size: 15px;
+}
+
+
 

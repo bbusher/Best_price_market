@@ -23,27 +23,47 @@ $(document).ready(function() {
             var m = now.getMonth() + 1; // 월은 0부터 시작하므로 +1
             var d = now.getDate();
             var h = now.getHours() + 1; // 시간은 시차 보정값 없이 가져옴
+            if (h >= 24) {
+                d += 1;
+                h = 0;
+            }
             var t = y.toString() + m.toString().padStart(2, '0') + d.toString().padStart(2, '0') + h.toString().padStart(2, '0')+'00';
 
             var weatherInfoHTML = "";
 
             data.forEach(function(row) {
+                // 이미지에 대한 조건문 추가
+                var weatherImage = 'image/basic.png'; // 기본 이미지 설정
                 if ('FCST24HOURS' in row) {
                     var forecasts = row['FCST24HOURS'];
                     JSON.stringify(forecasts)
                     forecasts.forEach(function(forecast) {
                         if ('FCST_DT' in forecast && forecast['FCST_DT'] == t) {
-                            weatherInfoHTML += "<p>오늘 서울의 날씨는 " + forecast['SKY_STTS'] + " 현재 기온은 " + row['TEMP'] + "도</p>";
+                            if (forecast['SKY_STTS'] === '맑음') {
+                                weatherImage = 'image/sun.png';
+                            } else if (forecast['SKY_STTS'] === '흐림' || forecast['SKY_STTS'] === '안개') {
+                                weatherImage = 'image/fog.png';
+                            } else if (forecast['SKY_STTS'] === '비' || forecast['SKY_STTS'] === '소나기' || forecast['SKY_STTS'] === '빗방울'|| forecast['SKY_STTS'] === '비 또는 눈' || forecast['SKY_STTS'] === '눈 또는 비') {
+                                weatherImage = 'image/rain.png';
+                            } else if (forecast['SKY_STTS'] === '눈' || forecast['SKY_STTS'] === '눈날림') {
+                                weatherImage = 'img/snow.png';
+                            }else if (forecast['SKY_STTS'] === '낙뢰') {
+                                weatherImage = 'image/thunder.png';
+                            }
+                            // 날씨 정보에 따라 이미지를 변경하여 추가
+                            weatherInfoHTML += "<div><img src='" + weatherImage + "' alt=''></div>";
+                            weatherInfoHTML += "<div id = 'w_contents'><p id = 'W_info'>오늘 서울 날씨는 " + forecast['SKY_STTS'] + "</p>"+ "<p id='d_info'>기온은 " + row['TEMP'] + "도</p>";
                         }
-                    });
+                    });                    
                 }
-            
+                weatherInfoHTML += "<p id = 'dust_info'>미세먼지 농도는 " + row['PM10'] + "으로 " + row['PM10_INDEX'] + ", 초미세먼지 농도는 " + row['PM25'] + "으로 " + row['PM25_INDEX'] + "</p>";
+                if (row['PM10_INDEX'] == '나쁨' || row['PM25_INDEX'] == '나쁨') {
+                    weatherInfoHTML += "<p id = 'dust_info' >오늘은 미세먼지 수치가 나쁨입니다. 마스크를 착용하는 것이 좋아요</p>";
+                }
+                weatherInfoHTML += "</div>";
+
                 /*weatherInfoHTML += "<p>최저기온은 " + row['MIN_TEMP'] + " 이며, 최고기온은 " + row['MAX_TEMP'] + " 으로 예상됩니다.</p>";*/
                 /*weatherInfoHTML += "<p>현재 기온은 " + row['TEMP'] + "도 이며</p>";*/
-                weatherInfoHTML += "<p>미세먼지 농도는 " + row['PM10'] + "으로 " + row['PM10_INDEX'] + ", 초미세먼지 농도는 " + row['PM25'] + "으로 " + row['PM25_INDEX'] + "입니다.</p>";
-                if (row['PM10_INDEX'] == '나쁨' || row['PM25_INDEX'] == '나쁨') {
-                    weatherInfoHTML += "<p>오늘은 미세먼지 수치가 나쁨입니다. 마스크를 착용하는 것이 좋아요</p>";
-                }
                /* weatherInfoHTML += "<p>낮동안 " + row['UV_MSG'] + "</p><br>";*/
             });
 
@@ -58,12 +78,10 @@ $(document).ready(function() {
         },
         complete: function() {
             // 요청 완료되면 로더 숨기기
-            $("#loader").hide();
+            $("#weatherLoader").hide();
         }
     });
 });
-
-
 
 
 
