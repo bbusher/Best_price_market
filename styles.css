@@ -120,7 +120,19 @@ a{
     
 }
 
+.outer-container_W {
+    border-radius: 20px;
+    height: 170px;
+    width: 604px;
+    margin-bottom: 30px;
+    background-color:rgb(236,238,239,0.5) ; /* 배경색 설정 */
+    padding: 20px;
+    margin-top: 10px;
+    white-space: nowrap;
+    scroll-behavior: smooth;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
 
+}
 
 .outer-container {
     border-radius: 20px;
