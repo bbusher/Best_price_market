@@ -4,7 +4,7 @@ var totalDataCount = 5000; // 총 데이터 개수
 var requestsCompleted = 0;
 
 $(document).ready(function() {
-    var vilage_weather_url = "http://openapi.seoul.go.kr:8088/6d4f457a686b776837306f79424b41/json/citydata/1/5/광화문·덕수궁";
+    var vilage_weather_url = "https://openapi.seoul.go.kr:8088/6d4f457a686b776837306f79424b41/json/citydata/1/5/광화문·덕수궁";
 
     // AJAX 요청
     $.ajax({
@@ -90,7 +90,7 @@ function loadData() {
     document.getElementById('loader').style.display = 'block';
     document.getElementById('loadingMessage').style.display = 'block';
 
-    var baseUrl = 'http://openapi.seoul.go.kr:8088/445971697a6b686936304e6f704667/xml/ListNecessariesPricesService/';
+    var baseUrl = 'https://openapi.seoul.go.kr:8088/445971697a6b686936304e6f704667/xml/ListNecessariesPricesService/';
     var batchUrls = [];
     
     // 요청할 URL들을 생성
